@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حل و رسم توابع</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>حل و رسم توابع</h1>
+    </header>
+    
+    <main>
+        <div class="form-container">
+            <label for="function-input">معادله تابع:</label>
+            <input type="text" id="function-input" placeholder="مثال: x^2 + 2*x + 1">
+            <button onclick="drawGraph()">رسم تابع</button>
+        </div>
+        <div id="graph"></div>
+    </main>
+    
+    <footer>
+        <p>تمام حقوق محفوظ است &copy; 2025</p>
+    </footer>
+
+    <script>
+        function drawGraph() {
+            const func = document.getElementById("function-input").value;
+            const x_vals = [];
+            const y_vals = [];
+
+            for (let x = -10; x <= 10; x += 0.1) {
+                x_vals.push(x);
+                y_vals.push(eval(func.replace(/x/g, x)));
+            }
+
+            const trace = {
+                x: x_vals,
+                y: y_vals,
+                mode: 'lines',
+                type: 'scatter'
+            };
+
+            const layout = {
+                title: `رسم تابع: ${func}`,
+                xaxis: {
+                    title: 'x'
+                },
+                yaxis: {
+                    title: 'y'
+                }
+            };
+
+            Plotly.newPlot('graph', [trace], layout);
+        }
+    </script>
+</body>
+</html>
