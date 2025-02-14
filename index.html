@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حل و رسم توابع</title>
+    <title>رسم تابع سینوسی</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
     <header>
-        <h1>حل و رسم توابع</h1>
+        <h1>رسم تابع سینوسی</h1>
     </header>
     
     <main>
         <div class="form-container">
-            <label for="function-input">معادله تابع:</label>
-            <input type="text" id="function-input" placeholder="مثال: x^2 + 2*x + 1">
-            <button onclick="drawGraph()">رسم تابع</button>
+            <button onclick="drawGraph()">رسم تابع سینوسی</button>
         </div>
         <div id="graph"></div>
     </main>
@@ -27,13 +25,13 @@
 
     <script>
         function drawGraph() {
-            const func = document.getElementById("function-input").value;
             const x_vals = [];
             const y_vals = [];
 
-            for (let x = -10; x <= 10; x += 0.1) {
+            // تولید مقادیر x از -2π تا 2π
+            for (let x = -2 * Math.PI; x <= 2 * Math.PI; x += 0.1) {
                 x_vals.push(x);
-                y_vals.push(eval(func.replace(/x/g, x)));
+                y_vals.push(Math.sin(x));
             }
 
             const trace = {
@@ -44,12 +42,12 @@
             };
 
             const layout = {
-                title: `رسم تابع: ${func}`,
+                title: 'رسم تابع سینوسی',
                 xaxis: {
                     title: 'x'
                 },
                 yaxis: {
-                    title: 'y'
+                    title: 'sin(x)'
                 }
             };
 
