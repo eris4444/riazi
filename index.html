@@ -3,17 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رسم تابع سینوسی</title>
+    <title>رسم تابع سینوسی با مقادیر دلخواه</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
     <header>
-        <h1>رسم تابع سینوسی</h1>
+        <h1>رسم تابع سینوسی با مقادیر دلخواه</h1>
     </header>
     
     <main>
         <div class="form-container">
+            <label for="start">شروع دامنه (x):</label>
+            <input type="number" id="start" value="-2" step="any">
+            <label for="end">پایان دامنه (x):</label>
+            <input type="number" id="end" value="2" step="any">
+            <label for="step">گام:</label>
+            <input type="number" id="step" value="0.1" step="any">
             <button onclick="drawGraph()">رسم تابع سینوسی</button>
         </div>
         <div id="graph"></div>
@@ -25,11 +31,14 @@
 
     <script>
         function drawGraph() {
+            const start = parseFloat(document.getElementById("start").value);
+            const end = parseFloat(document.getElementById("end").value);
+            const step = parseFloat(document.getElementById("step").value);
+
             const x_vals = [];
             const y_vals = [];
 
-            // تولید مقادیر x از -2π تا 2π
-            for (let x = -2 * Math.PI; x <= 2 * Math.PI; x += 0.1) {
+            for (let x = start; x <= end; x += step) {
                 x_vals.push(x);
                 y_vals.push(Math.sin(x));
             }
@@ -42,7 +51,7 @@
             };
 
             const layout = {
-                title: 'رسم تابع سینوسی',
+                title: `رسم تابع سینوسی از ${start} تا ${end}`,
                 xaxis: {
                     title: 'x'
                 },
