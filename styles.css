@@ -6,9 +6,10 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Vazir", Arial, sans-serif;
   line-height: 1.6;
   color: #333;
+  direction: rtl;
 }
 
 /* Header styles */
@@ -38,7 +39,7 @@ nav ul {
 }
 
 nav ul li {
-  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
 nav ul li a {
@@ -75,21 +76,28 @@ nav ul li a:hover {
   font-size: 1.2rem;
 }
 
-/* Featured property styles */
-#featured-property {
+/* Featured properties and property list styles */
+#featured-properties,
+#properties-list {
   max-width: 1200px;
   margin: 4rem auto;
   padding: 0 2rem;
 }
 
-#featured-property h2 {
+#featured-properties h2,
+#properties-list h1 {
   text-align: center;
   margin-bottom: 2rem;
   font-size: 2rem;
 }
 
+.property-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
 .property-card {
-  display: flex;
   background-color: #f9f9f9;
   border-radius: 8px;
   overflow: hidden;
@@ -97,13 +105,13 @@ nav ul li a:hover {
 }
 
 .property-image {
-  width: 50%;
+  width: 100%;
+  height: 200px;
   object-fit: cover;
 }
 
 .property-details {
-  width: 50%;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .property-details h3 {
@@ -132,10 +140,66 @@ nav ul li a:hover {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  text-decoration: none;
 }
 
 .cta-button:hover {
   background-color: #e6c200;
+}
+
+/* Property details styles */
+#property-details {
+  max-width: 1200px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+}
+
+.property-images {
+  margin-bottom: 2rem;
+}
+
+.main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.thumbnail-gallery {
+  display: flex;
+  gap: 1rem;
+}
+
+.thumbnail-gallery img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.property-info {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.property-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.property-info ul {
+  list-style-type: none;
+  margin-bottom: 2rem;
+}
+
+.property-info li {
+  margin-bottom: 0.5rem;
+}
+
+.property-info p {
+  margin-bottom: 1rem;
 }
 
 /* Footer styles */
@@ -157,8 +221,8 @@ footer {
   }
 
   nav ul li {
-    margin-left: 1rem;
     margin-right: 1rem;
+    margin-left: 1rem;
   }
 
   #hero h1 {
@@ -169,13 +233,17 @@ footer {
     font-size: 1rem;
   }
 
-  .property-card {
-    flex-direction: column;
+  .property-grid {
+    grid-template-columns: 1fr;
   }
 
-  .property-image,
-  .property-details {
-    width: 100%;
+  .thumbnail-gallery {
+    flex-wrap: wrap;
+  }
+
+  .thumbnail-gallery img {
+    width: calc(50% - 0.5rem);
+    height: auto;
   }
 }
 
